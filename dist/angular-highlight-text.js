@@ -2,7 +2,7 @@
 
 angular.module('angular-highlight-text', [])
 
-.filter('highlightText', function($sce) {
+.filter('highlightText', ['$sce', function($sce) {
 
   return function(input, match, className) {
 
@@ -19,9 +19,9 @@ angular.module('angular-highlight-text', [])
 
   };
 
-})
+}])
 
-.directive('highlightText', ['$sce', '$filter', function ($sce, $filter) {
+.directive('highlightText', ['$filter', function ($filter) {
 
   return {
     restrict: 'A',
