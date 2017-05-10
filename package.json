@@ -1,0 +1,40 @@
+{
+  "name": "angular-highlight-text",
+  "version": "0.1.0",
+  "description": "filter and directive to highlight text portions inside a element",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jasmine-core": "^2.6.1",
+    "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma": "^1.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codekraft-studio/angular-highlight-text.git"
+  },
+  "keywords": [
+    "angular",
+    "highlight",
+    "text",
+    "filter",
+    "directive"
+  ],
+  "author": "codekraft-studio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codekraft-studio/angular-highlight-text/issues"
+  },
+  "homepage": "https://github.com/codekraft-studio/angular-highlight-text#readme"
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Highlight Text | codekraft-studio</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+
+      header {
+        background-color: #159957;
+        background-image: linear-gradient(120deg, #155799, #159957);
+        padding: 40px;
+        color: white;
+      }
+
+      header .container h1 {
+        margin: 0;
+        font-size: 40px;
+      }
+
+      header .container h2 {
+        color: whitesmoke;
+        margin: 0 0 0.5em 0;
+      }
+
+      .demo-text {
+        padding: 10px;
+        background-color: #eee;
+        text-align: justify;
+        line-height: 25px;
+      }
+
+      @keyframes bubbling {
+        from { padding: 6px; border-radius: 2px; }
+        to { padding: 2px 4px; border-radius: 4px; }
+      }
+
+      .highlighted {
+        background-color: #55f5c1;
+        padding: 2px 4px;
+        color: #003a0a;
+        border-radius: 4px;
+        margin: 0 2px;
+        animation-name: bubbling;
+        animation-duration: 150ms;
+      }
+
+      .highlighted-blu {
+        background-color: #5ccaff;
+        padding: 2px 4px;
+        color: #00043a;
+        border-radius: 4px;
+        margin: 0 2px;
+        animation-name: bubbling;
+        animation-duration: 150ms;
+      }
+
+      .highlighted-yellow {
+        background-color: #FFEB3B;
+        padding: 2px 4px;
+        color: #a72800;
+        margin: 0 2px;
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+  <body ng-controller="MainCtrl">
+
+    <header>
+
+      <div class="container">
+        <h1>angular-highlight-text</h1>
+        <h2>a simple directive to highlight text portions inside a element</h2>
+      </div>
+
+    </header>
+
+    <main class="container">
+
+      <h3>It works like the classic Find function.</h3>
+      <p>Below there is a paragraph which uses the directive and every 2 seconds it will search for a different word inside the text.</p>
+
+      <!-- the random matches section -->
+      <div class="row">
+        <div class="col-md-12 panel">
+          <p class="demo-text" highlight-text="{text: fixedParagraph, match: randomMatch}"></p>
+        </div>
+      </div>
+
+      <p>You can also customize classes to have different highlight styles around your app by using the attribute <strong>highlight-class</strong>.</p>
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <h3>Highlighted text let you find faster what you want.</h3>
+          <p>When the search value changes the directive will re-render the element to highlight the portion of the string you are looking for.</p>
+        </div>
+
+        <div class="col-md-6" ng-init="input1 = 'consectetuer adipiscing elit'">
+
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="input1">
+          </div>
+
+          <p>You can use it as a directive: <code>highlight-text="{text: 'Some text', match: 'some'}"</code></p>
+          <pre>&lt;p highlight-text="{text: myText, match: myMatch}"&gt;&lt;/p&gt;</pre>
+
+        </div>
+
+        <div class="col-md-6">
+          <p highlight-class="highlighted-yellow" highlight-text="{text: exampleParagraphs[0], match: input1}"></p>
+        </div>
+
+      </div>
+
+      <div class="row" ng-init="input2 = 'text'">
+
+        <div class="col-md-12">
+          <h3>It's very funny to use with ng-repeat and other filters</h3>
+          <p>When the ng-repeat is filtered the text is also highlighted to let you know what is matching.</p>
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <input type="text" class="form-control" ng-model="input2">
+          </div>
+
+          <p>You can use it as a filter: <code>highlightText: matchText:highlightClass</code></p>
+          <pre>ng-bind-html="item | highlightText: matchText:'highlighted-blu'"</pre>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="list-group">
+
+            <div class="list-group-item" ng-repeat="item in items | filter: input2">
+              <span ng-bind-html="item | highlightText: input2:'highlighted-blu'"></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+  </body>
+  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="dist/angular-highlight-text.min.js"></script>
+  <script>
+
+    angular.module('app', ['angular-highlight-text'])
+
+    .controller('MainCtrl', function($scope, $interval) {
+
+      console.log($scope);
+
+      $scope.fixedParagraph = 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.';
+
+      $scope.exampleParagraphs = [
+        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.',
+        'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+        'Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.',
+        'Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.'
+      ];
+
+      $scope.items = [
+        'This is a text to test',
+        'Many many texts are here to been tested.',
+        'Only the words that you type in the text input are matched.',
+        'Not all the texts around.'
+      ];
+
+      // Split the paragraph to get word for matches
+      var matches = $scope.fixedParagraph.split(' ');
+
+      // Set a random value based on paragraph words
+      $interval(function() {
+        $scope.randomMatch = matches[Math.floor(Math.random() * matches.length)];
+      }, 2000);
+
+    });
+
+  </script>
+</html>
