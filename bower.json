@@ -1,0 +1,27 @@
+{
+  "name": "angular-highlight-text",
+  "description": "filter and directive to highlight text portions inside a element",
+  "main": "dist/angular-highlight-text.js",
+  "authors": [
+    "codekraft-studio"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angular",
+    "highlight",
+    "text",
+    "filter",
+    "directive"
+  ],
+  "homepage": "https://github.com/codekraft-studio/angular-highlight-text",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
+}
