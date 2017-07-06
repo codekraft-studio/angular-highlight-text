@@ -5,7 +5,9 @@
     <title>Angular Highlight Text | codekraft-studio</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
-
+      [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+      }
       header {
         background-color: #159957;
         background-image: linear-gradient(120deg, #155799, #159957);
@@ -65,7 +67,7 @@
 
     </style>
   </head>
-  <body ng-controller="MainCtrl">
+  <body ng-controller="MainCtrl" ng-cloak>
 
     <header>
 
@@ -149,7 +151,7 @@
     </main>
 
   </body>
-  <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script type="text/javascript" src="dist/angular-highlight-text.min.js"></script>
   <script>
 
